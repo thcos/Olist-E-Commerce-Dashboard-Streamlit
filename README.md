@@ -2,7 +2,7 @@
 
 Dashboard interaktif berbasis Streamlit untuk menganalisis penjualan marketplace e-commerce Brasil (Olist), mencakup GMV, tren transaksi, kategori produk, persebaran wilayah, dan segmentasi customer (RFM).
 
-Dashboard: 
+Dashboard: [https://olist-e-commerce-dashboard-app-g5f9nfvsqeybq2hzu9nqfz.streamlit.app/]
 
 ## Project Structure
 
