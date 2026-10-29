@@ -7,11 +7,11 @@ Dashboard: https://olist-e-commerce-dashboard-app-g5f9nfvsqeybq2hzu9nqfz.streaml
 ## Project Structure
 
 ```text
-├── dashboard.py
-├── all_data.csv
-├── brazil_states.geojson
-├── requirements.txt     : List of required libraries
-├── README.md            : Project documentation
+├── dashboard.py           : dashboard.py code python
+├── all_data.csv           : clean dataset
+├── brazil_states.geojson  : brazil map
+├── requirements.txt       : List of required libraries
+├── README.md              : Project documentation
 ```
 
 ## Data Source
