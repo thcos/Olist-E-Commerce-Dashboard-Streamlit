@@ -1,32 +1,32 @@
 # Olist E-Commerce Dashboard
 
-Dashboard interaktif berbasis Streamlit untuk menganalisis penjualan marketplace e-commerce Brasil (Olist), mencakup GMV, tren transaksi, kategori produk, persebaran wilayah, dan segmentasi customer (RFM).
+An interactive Streamlit dashboard for analyzing sales data from Olist, a Brazilian e-commerce marketplace. The dashboard covers GMV, transaction trends, product categories, geographic distribution, and customer segmentation using RFM analysis.
 
-Dashboard: [https://olist-e-commerce-dashboard-app-g5f9nfvsqeybq2hzu9nqfz.streamlit.app/]
+Dashboard: https://olist-e-commerce-dashboard-app-g5f9nfvsqeybq2hzu9nqfz.streamlit.app/
 
 ## Project Structure
 
+```text
+dashboard/           : Directory containing dashboard-related files
+├── dashboard.py
+├── all_data.csv
+├── brazil_states.geojson
+data/                : Directory containing raw CSV data
+notebook.ipynb       : Data analysis workflow
+requirements.txt     : List of required libraries
+README.md            : Project documentation
 ```
-dashboard/           : direktori berisi file untuk pembuatan dashboard
-├── dashboard.py            
-├── all_data.csv            
-├── brazil_states.geojson   
-data/                : direktori yang berisi data mentah csv
-notebook.ipynb       : proses analisis pada notebook.ipynb
-requirements.txt     : daftar library
-README.md            : dokumentasi file
 
-```
+## Data Source
 
-## Sumber Data
+Brazilian E-Commerce Public Dataset by Olist: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce/data
 
-Brazilian E-Commerce Public Dataset by Olist: [https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce/data].Tabel yang dipakai: orders, order items, products, product category
-name translation, customers, dan sellers.
+The following tables are used: orders, order items, products, product category name translation, customers, and sellers.
 
-## Catatan Metodologi
+## Methodology Notes
 
-- Hanya order berstatus `delivered` yang dianalisis.
-- GMV dihitung dari total harga barang (`price`).
-- Jumlah transaksi dihitung dari order unik (`order_id`).
-- Customer diidentifikasi dengan `customer_unique_id`, karena `customer_id` berubah di setiap order.
-- Skor RFM berskala 1 sampai 5 (5 = terbaik). Recency dan Monetary memakai kuantil, Frequency memakai batas manual karena sebagian besar customer hanya memiliki nilai frequency 1.
+- Only orders with a `delivered` status are included in the analysis.
+- GMV is calculated as the sum of item prices (`price`).
+- The number of transactions is calculated using unique order IDs (`order_id`).
+- Customers are identified using `customer_unique_id`, since `customer_id` changes with each order.
+- RFM scores range from 1 to 5, where 5 represents the best score. Recency and Monetary are scored using quantiles, while Frequency uses manually defined thresholds because most customers have a frequency value of 1.
