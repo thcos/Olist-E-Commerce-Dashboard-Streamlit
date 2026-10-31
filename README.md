@@ -7,7 +7,6 @@ Dashboard: https://olist-e-commerce-dashboard-app-g5f9nfvsqeybq2hzu9nqfz.streaml
 ## Project Structure
 
 ```text
-.
 ├── dashboard/
 │   ├── dashboard.py
 │   ├── all_data.csv
