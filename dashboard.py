@@ -35,6 +35,7 @@ def create_monthly_df(df):
         "price":"gmv"
     }, inplace=True)
     monthly_df["month"] = monthly_df["order_purchase_timestamp"].dt.strftime("%Y-%m")
+    monthly_df["gmv_per_order"] = monthly_df["gmv"] / monthly_df["order_count"]
     monthly_df["mom_growth"] = monthly_df["order_count"].pct_change() * 100
     return monthly_df
 
@@ -292,6 +293,40 @@ ax1.legend(
 fig.tight_layout()
 st.pyplot(fig)
 plt.close(fig)
+
+# Indeks: GMV, Total Orders, GMV per Order
+st.subheader("Indeks Pertumbuhan Bulanan: GMV, Total Orders, dan GMV per Order")
+base_label = monthly_df["month"].iloc[0]
+st.caption(f"Tiap metrik dibagi nilainya pada bulan pertama ({base_label}) lalu dikali 100, sehingga bulan pertama = 100.")
+COLOR_GMV, COLOR_ORDERS, COLOR_AOV = "#2440a3", "#E67E22", "#6b6b6b"
+
+index_cols = {"gmv": "GMV", "order_count": "Total Orders", "gmv_per_order": "GMV per Order"}
+idx_df = monthly_df.set_index("month")[list(index_cols)]
+idx_df = (idx_df / idx_df.iloc[0] * 100).rename(columns=index_cols)
+ 
+fig, ax = plt.subplots(figsize=(14, 6))
+for nama, warna in [("GMV", COLOR_GMV), ("Total Orders", COLOR_ORDERS), ("GMV per Order", COLOR_AOV)]:
+    ax.plot(idx_df.index, idx_df[nama], marker="o", markersize=4, linewidth=2, color=warna, label=nama)
+    ax.annotate(
+        f"{idx_df[nama].iloc[-1]:,.0f}",
+        xy=(idx_df.index[-1], idx_df[nama].iloc[-1]),
+        xytext=(8, 0), textcoords="offset points",
+        va="center", fontsize=10, color=warna, fontweight="bold",
+    )
+ 
+ax.axhline(100, color="black", linewidth=0.8, linestyle=":")
+ax.set_xlabel("Bulan (Tahun-Bulan)", fontsize=12)
+ax.set_ylabel("Indeks", fontsize=12)
+ax.yaxis.set_major_formatter(fmt_num)
+ax.tick_params(axis="x", rotation=45)
+plt.setp(ax.get_xticklabels(), ha="right")
+ax.grid(True, axis="y", linestyle="--", alpha=0.5)
+ax.legend(loc="upper left", fontsize=11)
+ax.margins(x=0.06)
+plt.tight_layout()
+st.pyplot(fig)
+plt.close(fig)
+ 
 
 # ---- Pertanyaan 3: Kategori Produk
 st.subheader("Best & Worst Performing Product Category")
