@@ -298,7 +298,7 @@ plt.close(fig)
 st.subheader("Monthly Growth Index: GMV, Total Orders, and GMV per Order")
 base_label = monthly_df["month"].iloc[0]
 st.caption(f"Tiap metrik dibagi nilainya pada bulan pertama ({base_label}) lalu dikali 100, sehingga bulan pertama = 100.")
-COLOR_GMV, COLOR_ORDERS, COLOR_AOV = "#2440a3", "#E67E22", "#6b6b6b"
+COLOR_GMV, COLOR_ORDERS, COLOR_AOV = "#2440a3", "#E67E22", "#5f7bde"
 
 index_cols = {"gmv": "GMV", "order_count": "Total Orders", "gmv_per_order": "GMV per Order"}
 idx_df = monthly_df.set_index("month")[list(index_cols)]
