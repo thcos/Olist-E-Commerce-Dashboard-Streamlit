@@ -1,18 +1,60 @@
 # Olist E-Commerce Dashboard
 
-An interactive Streamlit dashboard for analyzing sales data from Olist, a Brazilian e-commerce marketplace. The dashboard covers GMV, transaction trends, product categories, geographic distribution, and customer segmentation using RFM analysis.
+ Streamlit dashboard for analyzing sales data from Olist, a Brazilian e-commerce marketplace. The dashboard covers GMV, transaction trends, product categories, geographic distribution, and customer segmentation using RFM analysis.
 
 Dashboard: https://olist-e-commerce-dashboard-app-g5f9nfvsqeybq2hzu9nqfz.streamlit.app/
 
 ## Project Structure
 
 ```text
-├── dashboard.py           : dashboard.py code python
-├── all_data.csv           : clean dataset
-├── brazil_states.geojson  : brazil map
-├── requirements.txt       : List of required libraries
-├── README.md              : Project documentation
+.
+├── dashboard/
+│   ├── dashboard.py
+│   ├── all_data.csv
+│   └── brazil_states.geojson
+├── data/                                   # raw CSV data
+├── Proyek_Analisis_Data_E-Commerce.ipynb   # data analysis workflow
+├── requirements.txt                        # list of required libraries
+└── README.md                               # project documentation
 ```
+
+## Setup Environment - Anaconda
+
+Python 3.12 or newer is required.
+
+```shell
+git clone https://github.com/thcos/olist-e-commerce-dashboard-streamlit.git
+cd olist-e-commerce-dashboard-streamlit
+
+conda create --name main-ds python=3.12
+conda activate main-ds
+pip install -r requirements.txt
+```
+
+## Setup Environment - Shell/Terminal
+
+Python 3.12 or newer is required.
+
+```shell
+git clone https://github.com/thcos/olist-e-commerce-dashboard-streamlit.git
+cd olist-e-commerce-dashboard-streamlit
+
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+## Run Streamlit App
+
+Run the command below from the project root folder (the folder that contains `requirements.txt`):
+
+```shell
+streamlit run dashboard/dashboard.py
+```
+
+Press `Ctrl + C` in the terminal to stop it.
+
+The dashboard only needs the files inside the `dashboard/` folder (`all_data.csv` and `brazil_states.geojson`). The `data/` folder and the notebook are only needed to reproduce the analysis.
 
 ## Data Source
 
